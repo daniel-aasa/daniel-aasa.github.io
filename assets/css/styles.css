@@ -47,6 +47,11 @@ a.nav-item:hover {
 	border-radius: 50%;
 }
 
+.logo{
+	height:200px;
+	
+}
+
 .intro-description{
 	padding-top: 1rem;
 }
