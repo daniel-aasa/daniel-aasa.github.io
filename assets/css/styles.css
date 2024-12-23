@@ -84,8 +84,23 @@ a.nav-item:hover {
 	margin: 0 auto;
 }
 
+.title.is-4 {
+    font-style: italic;
+	font-size: larger;
+}
+
+.project1-link{
+	font-style: italic;
+}
+.project1-link:hover{
+	color: #fff;
+}
 .void-background {
 	background-color: transparent; 
+}
+
+.project1head{
+	font-weight: bold;
 }
 
 @media screen and (max-width: 768px) {
