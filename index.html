@@ -3,789 +3,322 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daniel Aasa - Portfolio</title>
-    <link rel="icon" type="image/x-icon" href="assets/img/D (2).png">
+    <title>Daniel Aasa · AI Solutions Engineer &amp; Product Builder</title>
+    <meta name="description" content="Daniel Aasa is an AI Solutions Engineer and full-stack product builder who designs, builds and ships production AI SaaS platforms across automotive, marine, hospitality, live events, industrial automation and fintech.">
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            --github-gradient: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
-            --dark-bg: #0a0a0a;
-            --card-bg: rgba(255, 255, 255, 0.05);
-            --text-primary: #ffffff;
-            --text-secondary: rgba(255, 255, 255, 0.7);
-            --border-color: rgba(255, 255, 255, 0.1);
-            --shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            --glow: 0 0 30px rgba(102, 126, 234, 0.3);
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--dark-bg);
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Animated background */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 20% 80%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 20%, rgba(118, 75, 162, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 40% 40%, rgba(240, 147, 251, 0.08) 0%, transparent 50%);
-            z-index: -1;
-            animation: backgroundShift 20s ease-in-out infinite;
-        }
-
-        @keyframes backgroundShift {
-            0%, 100% { transform: translateX(0) translateY(0); }
-            33% { transform: translateX(-10px) translateY(10px); }
-            66% { transform: translateX(10px) translateY(-10px); }
-        }
-
-        /* Navigation */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 1rem 2rem;
-            background: rgba(10, 10, 10, 0.9);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border-color);
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            position: relative;
-            padding: 0.5rem 0;
-        }
-
-        .nav-links a::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary-gradient);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--text-primary);
-        }
-
-        .nav-links a:hover::before {
-            width: 100%;
-        }
-
-        /* Hero Section - Fixed positioning */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 8rem 2rem 2rem; /* Added top padding to account for fixed navbar */
-            position: relative;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            animation: fadeInUp 1s ease;
-        }
-
-        .hero-avatar {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 2rem;
-            border-radius: 50%;
-            background: var(--primary-gradient);
-            padding: 4px;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .hero-avatar img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .social-link {
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 15px;
-            color: var(--text-primary);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
-
-        .social-link:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--glow);
-            border-color: rgba(102, 126, 234, 0.5);
-        }
-
-        .social-link.github:hover {
-            box-shadow: 0 0 30px rgba(45, 55, 72, 0.3);
-            border-color: rgba(45, 55, 72, 0.5);
-        }
-
-        /* Sections */
-        .section {
-            padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 3rem;
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 2rem;
-            color: var(--text-secondary);
-        }
-
-        /* Project Grid */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
-
-        .project-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 2rem;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--primary-gradient);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .project-card.github::before {
-            background: var(--github-gradient);
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow);
-            border-color: rgba(102, 126, 234, 0.3);
-        }
-
-        .project-card.github:hover {
-            border-color: rgba(45, 55, 72, 0.3);
-        }
-
-        .project-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .project-image {
-            width: 100%;
-            height: 200px;
-            border-radius: 15px;
-            overflow: hidden;
-            margin-bottom: 1.5rem;
-            background: var(--border-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .project-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .project-image .github-icon {
-            font-size: 4rem;
-            color: var(--text-secondary);
-            transition: all 0.3s ease;
-        }
-
-        .project-card:hover .project-image img {
-            transform: scale(1.05);
-        }
-
-        .project-card:hover .github-icon {
-            color: var(--text-primary);
-            transform: scale(1.1);
-        }
-
-        .project-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-
-        .project-description {
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .tech-tag {
-            background: rgba(102, 126, 234, 0.2);
-            color: var(--text-primary);
-            padding: 0.25rem 0.75rem;
-            border-radius: 15px;
-            font-size: 0.875rem;
-            font-weight: 500;
-        }
-
-        .project-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--text-primary);
-            text-decoration: none;
-            font-weight: 500;
-            padding: 0.75rem 1.5rem;
-            background: var(--primary-gradient);
-            border-radius: 25px;
-            transition: all 0.3s ease;
-        }
-
-        .project-link.github {
-            background: var(--github-gradient);
-        }
-
-        .project-link:hover {
-            transform: translateX(5px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-        }
-
-        .project-link.github:hover {
-            box-shadow: 0 5px 15px rgba(45, 55, 72, 0.4);
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in {
-            animation: fadeInUp 0.8s ease forwards;
-            opacity: 0;
-        }
-
-        /* Mobile Menu */
-        .mobile-menu-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            gap: 4px;
-        }
-
-        .mobile-menu-toggle span {
-            width: 25px;
-            height: 3px;
-            background: var(--text-primary);
-            transition: all 0.3s ease;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: rgba(10, 10, 10, 0.95);
-                backdrop-filter: blur(20px);
-                flex-direction: column;
-                padding: 1rem;
-                gap: 1rem;
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .mobile-menu-toggle {
-                display: flex;
-            }
-
-            .hero {
-                padding: 6rem 1rem 2rem;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero-avatar {
-                width: 150px;
-                height: 150px;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .section {
-                padding: 3rem 1rem;
-            }
-
-            .social-links {
-                flex-wrap: wrap;
-            }
-        }
-
-        /* Scroll animations */
-        .scroll-reveal {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease;
-        }
-
-        .scroll-reveal.revealed {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
+    <div class="grid-bg" aria-hidden="true"></div>
+    <div class="scanline" aria-hidden="true"></div>
+
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <div class="logo">Daniel Aasa</div>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#github">GitHub</a></li>
-                <li><a href="https://www.linkedin.com/in/daniel-aasa/" target="_blank">LinkedIn</a></li>
-                <li><a href="https://medium.com/@danaasa" target="_blank">Medium</a></li>
+            <a href="#top" class="logo"><span class="logo-mark">DA</span> Daniel Aasa</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#work">Work</a></li>
+                <li><a href="#stack">Stack</a></li>
+                <li><a href="#github">Open Source</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
-            <div class="mobile-menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
+            <a href="#contact" class="nav-cta">Start a project</a>
+            <div class="mobile-menu-toggle" id="menuToggle" aria-label="Menu">
+                <span></span><span></span><span></span>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero" id="about">
+    <header class="hero" id="top">
         <div class="hero-content">
             <div class="hero-avatar">
-                <img src="assets/img/my-image.jpg" alt="Daniel Aasa">
+                <img src="assets/img/avatar.webp" alt="Daniel Aasa" width="150" height="150" fetchpriority="high">
             </div>
-            <h1>Daniel Aasa</h1>
-            <p> AI Engineer & No-Code Expert with a strong track record in designing, developing, and deploying cutting-edge AI models and solutions. Proficient in advanced machine learning techniques, natural language processing, and generative AI algorithms. I specialize in integrating AI capabilities into scalable, user-friendly applications using no-code platforms like Bubble.io — accelerating MVP delivery without compromising performance. Adept at optimizing AI systems for real-world impact, I thrive at the intersection of technical depth and rapid, agile deployment. Passionate about pushing the boundaries of AI and no-code to deliver intelligent, data-driven solutions at scale.</p>
-            
+            <span class="hero-badge"><span class="pulse-dot"></span> Available for new projects</span>
+            <h1 class="hero-title">Daniel Aasa</h1>
+            <p class="hero-role">AI Solutions Engineer <span>/</span> Full-Stack Product Builder</p>
+            <p class="hero-bio">
+                I design, build and ship production AI products end to end, from machine learning and
+                natural-language systems to cloud-native SaaS platforms. I turn ambitious ideas into live,
+                revenue-ready applications across automotive, marine, hospitality, live events, industrial
+                automation and fintech.
+            </p>
+            <div class="hero-actions">
+                <a href="#work" class="btn btn-primary">View my work <i class="fas fa-arrow-right"></i></a>
+                <a href="#contact" class="btn btn-ghost">Get in touch</a>
+            </div>
             <div class="social-links">
-                <a href="https://www.linkedin.com/in/daniel-aasa/" target="_blank" class="social-link">
-                    <i class="fab fa-linkedin-in"></i>
+                <a href="https://github.com/daniel-aasa" target="_blank" rel="noopener" class="social-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/daniel-aasa/" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://medium.com/@danaasa" target="_blank" rel="noopener" class="social-link" aria-label="Medium"><i class="fab fa-medium-m"></i></a>
+                <a href="mailto:aasaoluwagbemiga@gmail.com" class="social-link" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Stats strip -->
+    <section class="stats">
+        <div class="stats-inner">
+            <div class="stat"><span class="stat-num" data-count="10">10</span><span class="stat-label">Live Products</span></div>
+            <div class="stat"><span class="stat-num" data-count="8">8</span><span class="stat-label">Industries</span></div>
+            <div class="stat"><span class="stat-num" data-count="6">6</span><span class="stat-label">Open-Source AI Tools</span></div>
+            <div class="stat"><span class="stat-num stat-text">AWS</span><span class="stat-label">Cloud-Native</span></div>
+        </div>
+    </section>
+
+    <!-- Work Section -->
+    <main class="section" id="work">
+        <div class="section-head scroll-reveal">
+            <span class="eyebrow">// selected work</span>
+            <h2 class="section-title">Products I've built and shipped</h2>
+            <p class="section-lead">
+                Live, production SaaS platforms and applications, designed and engineered end to end.
+                Every one is deployed and running. The previews below are live screenshots.
+            </p>
+        </div>
+
+        <!-- AI-Powered Products -->
+        <h3 class="category-title scroll-reveal"><i class="fas fa-robot"></i> AI-Powered Products</h3>
+        <div class="projects-grid">
+            <article class="project-card scroll-reveal">
+                <a class="project-image" href="https://aiautofindr.com" target="_blank" rel="noopener">
+                    <img src="assets/img/projects/aiautofindr.webp" alt="AI AutoFindr" width="820" height="512" loading="lazy" decoding="async">
                 </a>
-                <a href="https://medium.com/@danaasa" target="_blank" class="social-link">
-                    <i class="fab fa-medium-m"></i>
+                <div class="project-body">
+                    <h4 class="project-title">AI AutoFindr</h4>
+                    <p class="project-description">Find genuine, compatible auto parts in seconds. AI-powered search across 30+ marketplaces worldwide with VIN decoding, price comparison and buyer intelligence.</p>
+                    <div class="project-tech"><span class="tech-tag">AI Search</span><span class="tech-tag">Flask</span><span class="tech-tag">AWS Lambda</span><span class="tech-tag">Stripe</span></div>
+                    <a href="https://aiautofindr.com" target="_blank" rel="noopener" class="project-link">Visit site <i class="fas fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </article>
+
+            <article class="project-card scroll-reveal">
+                <a class="project-image" href="https://aiboatfindr.com" target="_blank" rel="noopener">
+                    <img src="assets/img/projects/aiboatfindr.webp" alt="AI BoatFindr" width="820" height="512" loading="lazy" decoding="async">
                 </a>
-                <a href="https://github.com/daniel-aasa" target="_blank" class="social-link github">
-                    <i class="fab fa-github"></i>
+                <div class="project-body">
+                    <h4 class="project-title">AI BoatFindr</h4>
+                    <p class="project-description">Marine parts and boats, found instantly. AI searches trusted sources worldwide, decodes HINs and engine models, and surfaces exactly what matters for repairs and purchases.</p>
+                    <div class="project-tech"><span class="tech-tag">AI Search</span><span class="tech-tag">Flask</span><span class="tech-tag">AWS</span><span class="tech-tag">Terraform</span></div>
+                    <a href="https://aiboatfindr.com" target="_blank" rel="noopener" class="project-link">Visit site <i class="fas fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </article>
+
+            <article class="project-card scroll-reveal">
+                <a class="project-image" href="https://revealcostai.com" target="_blank" rel="noopener">
+                    <img src="assets/img/projects/revealcostai.webp" alt="RevealCost AI" width="820" height="512" loading="lazy" decoding="async">
                 </a>
+                <div class="project-body">
+                    <h4 class="project-title">RevealCost AI</h4>
+                    <p class="project-description">The economics layer for your AI stack. Forecasts spend, attributes cost by team and provider, and delivers optimization and budget guardrails across every LLM gateway.</p>
+                    <div class="project-tech"><span class="tech-tag">Next.js</span><span class="tech-tag">Python</span><span class="tech-tag">Postgres</span><span class="tech-tag">FinOps</span></div>
+                    <a href="https://revealcostai.com" target="_blank" rel="noopener" class="project-link">Visit site <i class="fas fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </article>
+
+            <article class="project-card scroll-reveal">
+                <a class="project-image" href="https://premiereiq.com" target="_blank" rel="noopener">
+                    <img src="assets/img/projects/premiereiq.webp" alt="PremiereIQ" width="820" height="512" loading="lazy" decoding="async">
+                </a>
+                <div class="project-body">
+                    <h4 class="project-title">PremiereIQ</h4>
+                    <p class="project-description">Audience intelligence for live screenings. Real-time QR feedback, leaderboards, award automation and AI-generated creator reports for film premieres, launches and shows.</p>
+                    <div class="project-tech"><span class="tech-tag">Next.js</span><span class="tech-tag">FastAPI</span><span class="tech-tag">OpenAI</span><span class="tech-tag">DynamoDB</span></div>
+                    <a href="https://premiereiq.com" target="_blank" rel="noopener" class="project-link">Visit site <i class="fas fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </article>
+        </div>
+
+        <!-- B2B SaaS Platforms -->
+        <h3 class="category-title scroll-reveal"><i class="fas fa-layer-group"></i> B2B SaaS Platforms</h3>
+        <div class="projects-grid">
+            <article class="project-card scroll-reveal">
+                <a class="project-image" href="https://myprivatelane.com" target="_blank" rel="noopener">
+                    <img src="assets/img/projects/myprivatelane.webp" alt="MyPrivateLane" width="820" height="512" loading="lazy" decoding="async">
+                </a>
+                <div class="project-body">
+                    <h4 class="project-title">MyPrivateLane</h4>
+                    <p class="project-description">Dispatch, pricing, compliance and invoicing for black car and limo operators, without marketplace fees or broker cuts. Multi-tenant with corporate and hotel portals.</p>
+                    <div class="project-tech"><span class="tech-tag">Next.js</span><span class="tech-tag">Fastify</span><span class="tech-tag">DynamoDB</span><span class="tech-tag">AWS</span></div>
+                    <a href="https://myprivatelane.com" target="_blank" rel="noopener" class="project-link">Visit site <i class="fas fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </article>
+
+            <article class="project-card scroll-reveal">
+                <a class="project-image" href="https://dev.servicecrewnow.com" target="_blank" rel="noopener">
+                    <img src="assets/img/projects/servicecrewnow.webp" alt="ServiceCrewNow" width="820" height="512" loading="lazy" decoding="async">
+                </a>
+                <div class="project-body">
+                    <h4 class="project-title">ServiceCrewNow</h4>
+                    <p class="project-description">On-demand hospitality staffing. Connects businesses with qualified workers across the full shift lifecycle: posting, AI matching, check-in monitoring, payments and ratings.</p>
+                    <div class="project-tech"><span class="tech-tag">Next.js</span><span class="tech-tag">Express</span><span class="tech-tag">PostgreSQL</span><span class="tech-tag">Redis</span></div>
+                    <a href="https://dev.servicecrewnow.com" target="_blank" rel="noopener" class="project-link">Visit site <i class="fas fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </article>
+
+            <article class="project-card scroll-reveal">
+                <a class="project-image" href="https://detectrecover.com" target="_blank" rel="noopener">
+                    <img src="assets/img/projects/detectrecover.webp" alt="DetectRecover" width="820" height="512" loading="lazy" decoding="async">
+                </a>
+                <div class="project-body">
+                    <h4 class="project-title">DetectRecover</h4>
+                    <p class="project-description">Refund recovery and fraud detection for quick-service restaurants. Detects overcharges, disputes and fraudulent transactions with POS integration and customer fraud scoring.</p>
+                    <div class="project-tech"><span class="tech-tag">React</span><span class="tech-tag">TypeScript</span><span class="tech-tag">Flask</span><span class="tech-tag">AWS</span></div>
+                    <a href="https://detectrecover.com" target="_blank" rel="noopener" class="project-link">Visit site <i class="fas fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </article>
+
+            <article class="project-card scroll-reveal">
+                <a class="project-image" href="https://fullrecoverhq.com" target="_blank" rel="noopener">
+                    <img src="assets/img/projects/fullrecover.webp" alt="FullRecover" width="820" height="512" loading="lazy" decoding="async">
+                </a>
+                <div class="project-body">
+                    <h4 class="project-title">FullRecover</h4>
+                    <p class="project-description">Expense recovery and grant management. Track expenses with OCR receipt scanning, manage funding sources, generate reimbursement invoices and stay compliant, with approval workflows.</p>
+                    <div class="project-tech"><span class="tech-tag">Next.js</span><span class="tech-tag">FastAPI</span><span class="tech-tag">Postgres</span><span class="tech-tag">AWS CDK</span></div>
+                    <a href="https://fullrecoverhq.com" target="_blank" rel="noopener" class="project-link">Visit site <i class="fas fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </article>
+        </div>
+
+        <!-- Industrial & Consumer -->
+        <h3 class="category-title scroll-reveal"><i class="fas fa-microchip"></i> Industrial &amp; Consumer</h3>
+        <div class="projects-grid">
+            <article class="project-card scroll-reveal">
+                <a class="project-image" href="https://protectplc.com" target="_blank" rel="noopener">
+                    <img src="assets/img/projects/protectplc.webp" alt="ProtectPLC" width="820" height="512" loading="lazy" decoding="async">
+                </a>
+                <div class="project-body">
+                    <h4 class="project-title">ProtectPLC</h4>
+                    <p class="project-description">GitHub for industrial PLCs. Automated cloud backup, version history and diff viewing for Rockwell, Siemens and 20+ vendors, with a secure outbound-only on-prem agent.</p>
+                    <div class="project-tech"><span class="tech-tag">Next.js</span><span class="tech-tag">Express</span><span class="tech-tag">Go Agent</span><span class="tech-tag">Postgres</span></div>
+                    <a href="https://protectplc.com" target="_blank" rel="noopener" class="project-link">Visit site <i class="fas fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </article>
+
+            <article class="project-card scroll-reveal">
+                <a class="project-image" href="https://photoboothify.com" target="_blank" rel="noopener">
+                    <img src="assets/img/projects/photoboothify.webp" alt="Photoboothify" width="820" height="512" loading="lazy" decoding="async">
+                </a>
+                <div class="project-body">
+                    <h4 class="project-title">Photoboothify</h4>
+                    <p class="project-description">A cross-platform event photobooth on iOS and Android. Guests capture photos, get instant QR codes for sharing and retrieve media via short codes. Offline-first with AI strip frames.</p>
+                    <div class="project-tech"><span class="tech-tag">React Native</span><span class="tech-tag">Express</span><span class="tech-tag">DynamoDB</span><span class="tech-tag">AWS CDK</span></div>
+                    <a href="https://photoboothify.com" target="_blank" rel="noopener" class="project-link">Visit site <i class="fas fa-arrow-up-right-from-square"></i></a>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <!-- Skills / Stack -->
+    <section class="section stack-section" id="stack">
+        <div class="section-head scroll-reveal">
+            <span class="eyebrow">// how i build</span>
+            <h2 class="section-title">Tools of the trade</h2>
+        </div>
+        <div class="stack-grid">
+            <div class="stack-col scroll-reveal">
+                <h4><i class="fas fa-brain"></i> AI &amp; ML</h4>
+                <ul><li>OpenAI / GPT-4o</li><li>Whisper &amp; NLP</li><li>LLM fine-tuning &amp; fusion</li><li>Retrieval &amp; agents</li></ul>
+            </div>
+            <div class="stack-col scroll-reveal">
+                <h4><i class="fas fa-code"></i> Frontend</h4>
+                <ul><li>Next.js / React</li><li>TypeScript</li><li>Tailwind CSS</li><li>React Native</li></ul>
+            </div>
+            <div class="stack-col scroll-reveal">
+                <h4><i class="fas fa-server"></i> Backend</h4>
+                <ul><li>FastAPI / Flask</li><li>Node, Express, Fastify</li><li>Go</li><li>PostgreSQL, DynamoDB</li></ul>
+            </div>
+            <div class="stack-col scroll-reveal">
+                <h4><i class="fas fa-cloud"></i> Cloud &amp; DevOps</h4>
+                <ul><li>AWS (Lambda, S3, Cognito)</li><li>Terraform, CDK, SAM</li><li>Docker, Compose</li><li>GitHub Actions CI/CD</li></ul>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section class="section" id="projects">
-        <h2 class="section-title scroll-reveal">Professional Projects</h2>
-        <h3 class="section-subtitle scroll-reveal">Web Application Development & Product/Project Management</h3>
-        
-        <div class="projects-grid">
-            <div class="project-card scroll-reveal">
-                <div class="project-image">
-                    <img src="assets/img/afrocourier.png" alt="AfroCourier">
-                </div>
-                <h3 class="project-title">AfroCourier</h3>
-                <p class="project-description">
-                    AfroCourier is an online African grocery delivery service that brings authentic African flavors and unique ingredients directly to your doorstep. Serving the Los Angeles County area, AfroCourier offers a user-friendly platform highlighting their commitment to speed and reliability.
-                </p>
-                <a href="https://afrocourier.com" target="_blank" class="project-link">
-                    Visit Website <i class="fas fa-external-link-alt"></i>
-                </a>
-            </div>
-            
-            <div class="project-card scroll-reveal">
-                <div class="project-image">
-                    <img src="assets/img/ulrated.png" alt="WorksAfrica">
-                </div>
-                <h3 class="project-title">UL Rated Panels</h3>
-                <p class="project-description">
-UL Rated Panels offers expert design and delivery of professional electrical schematics, including control panel layouts and single-line diagrams—with a strong emphasis on precision and compliance with industry standards—designed to meet clients’ specific needs without overextending budgets                </p>
-                <a href="https://ulratedpanels.com" target="_blank" class="project-link">
-                    Visit Website <i class="fas fa-external-link-alt"></i>
-                </a>
-            </div>
-            
-            <div class="project-card scroll-reveal">
-                <div class="project-image">
-                    <img src="assets/img/Photobooth.png" alt="PhotoBoothify">
-                </div>
-                <h3 class="project-title">PhotoBoothify</h3>
-                <p class="project-description">
-                    Photoboothify is a platform that offers photo booth solutions for events and businesses. Their services include customizable photo booth rentals and installations designed to enhance guest engagement and capture memorable moments with branded templates and social media sharing.
-                </p>
-                <a href="https://photoboothify.com" target="_blank" class="project-link">
-                    Visit Website <i class="fas fa-external-link-alt"></i>
-                </a>
-            </div>
-
-            <div class="project-card scroll-reveal">
-                <div class="project-image">
-                    <img src="assets/img/worksafrica.png" alt="WorksAfrica">
-                </div>
-                <h3 class="project-title">WorksAfrica</h3>
-                <p class="project-description">
-                    WorksAfrica is a platform dedicated to connecting African talent with verified international remote job opportunities. By focusing on legitimate work-from-home positions, it aims to unlock Africa's potential by bridging the gap between skilled professionals and global employers.
-                </p>
-                <a href="https://worksafrica.com" target="_blank" class="project-link">
-                    Visit Website <i class="fas fa-external-link-alt"></i>
-                </a>
-            </div>
-
-            <div class="project-card scroll-reveal">
-                <div class="project-image">
-                    <img src="assets/img/mopolservice.png" alt="MopolService">
-                </div>
-                <h3 class="project-title">MopolService</h3>
-                <p class="project-description">
-                    MopolService is a car rental platform that provides secure and convenient transportation solutions. It offers services such as hourly car rentals with professional drivers and rentals with security escorts, catering to individuals and businesses seeking safety and reliability.
-                </p>
-                <a href="https://mopolservice.com" target="_blank" class="project-link">
-                    Visit Website <i class="fas fa-external-link-alt"></i>
-                </a>
-            </div>
-        </div>
-
-        <h3 class="section-subtitle scroll-reveal">Tech Mentor & Learning Facilitator</h3>
-        
-        <div class="projects-grid">
-            <div class="project-card scroll-reveal">
-                <div class="project-image">
-                    <img src="assets/img/Group-5-300x168.png" alt="3MTT">
-                </div>
-                <h3 class="project-title">3MTT Program</h3>
-                <p class="project-description">
-                    The 3 Million Technical Talent (3MTT) program, initiated by Nigeria's Federal Ministry of Communications, Innovation & Digital Economy, aims to develop a robust technical workforce to drive the nation's digital economy and position Nigeria as a leading exporter of tech talent.
-                </p>
-                <a href="https://3mtt.nitda.gov.ng/" target="_blank" class="project-link">
-                    Visit Website <i class="fas fa-external-link-alt"></i>
-                </a>
-            </div>
-
-            <div class="project-card scroll-reveal">
-                <div class="project-image">
-                    <img src="assets/img/unnamed.jpg" alt="The Bulb Africa">
-                </div>
-                <h3 class="project-title">The Bulb Africa</h3>
-                <p class="project-description">
-                    The Bulb Africa is a leading tech talent incubator dedicated to nurturing and equipping Africa's rising tech professionals. Through immersive training programs, it addresses the shortage of African tech talents by molding young Africans into tech experts and creating employment opportunities.
-                </p>
-                <a href="https://www.thebulb.africa/" target="_blank" class="project-link">
-                    Visit Website <i class="fas fa-external-link-alt"></i>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- GitHub Repositories Section -->
+    <!-- Open Source / GitHub Section -->
     <section class="section" id="github">
-        <h2 class="section-title scroll-reveal">GitHub Repositories</h2>
-        <h3 class="section-subtitle scroll-reveal">AI & Machine Learning Projects</h3>
-        
+        <div class="section-head scroll-reveal">
+            <span class="eyebrow">// open source</span>
+            <h2 class="section-title">AI &amp; machine learning experiments</h2>
+            <p class="section-lead">Research projects and prototypes exploring NLP, speech and generative AI.</p>
+        </div>
         <div class="projects-grid">
-            <div class="project-card github scroll-reveal">
-                <div class="project-image">
-                    <i class="fab fa-github github-icon"></i>
+            <article class="project-card github scroll-reveal">
+                <div class="project-body">
+                    <div class="repo-head"><i class="fab fa-github"></i><h4 class="project-title">AI Political Debate Chatbot</h4></div>
+                    <p class="project-description">Two AI chatbots engage in political debates, presenting opposing viewpoints. Explores NLP, argument structure and conversational AI dynamics.</p>
+                    <div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">NLP</span></div>
+                    <a href="https://github.com/daniel-aasa/AI-Political-Debate-Chatbot-Argument-Simulator" target="_blank" rel="noopener" class="project-link github">View repo <i class="fab fa-github"></i></a>
                 </div>
-                <h3 class="project-title">AI Political Debate Chatbot</h3>
-                <p class="project-description">
-                    A simulation where two AI chatbots engage in political debates, presenting opposing viewpoints on various topics. This project explores natural language processing, argument structure, and conversational AI dynamics.
-                </p>
-                <div class="project-tech">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">NLP</span>
-                    <span class="tech-tag">AI</span>
+            </article>
+            <article class="project-card github scroll-reveal">
+                <div class="project-body">
+                    <div class="repo-head"><i class="fab fa-github"></i><h4 class="project-title">AfrocourierAI Chatbot</h4></div>
+                    <p class="project-description">An intelligent chatbot for African cuisine that understands food queries, extracts key ingredients from conversation and emails ingredient lists to users.</p>
+                    <div class="project-tech"><span class="tech-tag">AI</span><span class="tech-tag">Chatbot</span></div>
+                    <a href="https://github.com/daniel-aasa/Intelligent-Chatbot-for-African-Food-AfrocourierAI" target="_blank" rel="noopener" class="project-link github">View repo <i class="fab fa-github"></i></a>
                 </div>
-                <a href="https://github.com/daniel-aasa/AI-Political-Debate-Chatbot-Argument-Simulator" target="_blank" class="project-link github">
-                    View Repository <i class="fab fa-github"></i>
-                </a>
-            </div>
+            </article>
+            <article class="project-card github scroll-reveal">
+                <div class="project-body">
+                    <div class="repo-head"><i class="fab fa-github"></i><h4 class="project-title">Video to Blog Converter</h4></div>
+                    <p class="project-description">An AI tool that converts videos to blog posts using Whisper transcription, the YouTube Transcript API and a Gradio interface for automated content generation.</p>
+                    <div class="project-tech"><span class="tech-tag">Whisper</span><span class="tech-tag">Gradio</span></div>
+                    <a href="https://github.com/daniel-aasa/Using-AI-to-Build-a-Video-to-Blog-Converter" target="_blank" rel="noopener" class="project-link github">View repo <i class="fab fa-github"></i></a>
+                </div>
+            </article>
+            <article class="project-card github scroll-reveal">
+                <div class="project-body">
+                    <div class="repo-head"><i class="fab fa-github"></i><h4 class="project-title">English to Yoruba Translator</h4></div>
+                    <p class="project-description">Real-time English-to-Yoruba translation using Whisper for speech-to-text and GPT-4o-mini for translation, preserving African languages through technology.</p>
+                    <div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Translation</span></div>
+                    <a href="https://github.com/daniel-aasa/Real-Time-English-to-Yoruba-Translator" target="_blank" rel="noopener" class="project-link github">View repo <i class="fab fa-github"></i></a>
+                </div>
+            </article>
+            <article class="project-card github scroll-reveal">
+                <div class="project-body">
+                    <div class="repo-head"><i class="fab fa-github"></i><h4 class="project-title">Text Summarization with GPT-4</h4></div>
+                    <p class="project-description">Advanced text summarization using GPT-4 and Beautiful Soup. Extracts and condenses web-page content for more efficient information consumption.</p>
+                    <div class="project-tech"><span class="tech-tag">GPT-4</span><span class="tech-tag">Web Scraping</span></div>
+                    <a href="https://github.com/daniel-aasa/Text-Summarization-Using-OpenAI-s-GPT-4-and-Beautiful-Soup" target="_blank" rel="noopener" class="project-link github">View repo <i class="fab fa-github"></i></a>
+                </div>
+            </article>
+            <article class="project-card github scroll-reveal">
+                <div class="project-body">
+                    <div class="repo-head"><i class="fab fa-github"></i><h4 class="project-title">LLM Model Fusion</h4></div>
+                    <p class="project-description">Merging two language models with the mergekit tool. Demonstrates advanced techniques in model combination and optimization for enhanced capabilities.</p>
+                    <div class="project-tech"><span class="tech-tag">LLM</span><span class="tech-tag">mergekit</span></div>
+                    <a href="https://github.com/daniel-aasa/LLM-Model-Fusion-with-Mergekit" target="_blank" rel="noopener" class="project-link github">View repo <i class="fab fa-github"></i></a>
+                </div>
+            </article>
+        </div>
+    </section>
 
-            <div class="project-card github scroll-reveal">
-                <div class="project-image">
-                    <i class="fab fa-github github-icon"></i>
-                </div>
-                <h3 class="project-title">AfrocourierAI Chatbot</h3>
-                <p class="project-description">
-                    An intelligent chatbot for African cuisine that understands queries about African food, extracts key ingredients from conversations, and can even email ingredient lists to users. Perfect for food enthusiasts and meal planning.
-                </p>
-                <div class="project-tech">
-                    <span class="tech-tag">AI</span>
-                    <span class="tech-tag">Chatbot</span>
-                    <span class="tech-tag">Food Tech</span>
-                </div>
-                <a href="https://github.com/daniel-aasa/Intelligent-Chatbot-for-African-Food-AfrocourierAI" target="_blank" class="project-link github">
-                    View Repository <i class="fab fa-github"></i>
-                </a>
-            </div>
-
-            <div class="project-card github scroll-reveal">
-                <div class="project-image">
-                    <i class="fab fa-github github-icon"></i>
-                </div>
-                <h3 class="project-title">Video to Blog Converter</h3>
-                <p class="project-description">
-                    An AI-powered tool that converts videos to blog posts using cutting-edge libraries and APIs. Features Gradio interface, YouTube Transcript API, OpenAI's Whisper for transcription, and automated content generation.
-                </p>
-                <div class="project-tech">
-                    <span class="tech-tag">AI</span>
-                    <span class="tech-tag">Whisper</span>
-                    <span class="tech-tag">Gradio</span>
-                </div>
-                <a href="https://github.com/daniel-aasa/Using-AI-to-Build-a-Video-to-Blog-Converter" target="_blank" class="project-link github">
-                    View Repository <i class="fab fa-github"></i>
-                </a>
-            </div>
-
-            <div class="project-card github scroll-reveal">
-                <div class="project-image">
-                    <i class="fab fa-github github-icon"></i>
-                </div>
-                <h3 class="project-title">English to Yoruba Translator</h3>
-                <p class="project-description">
-                    A real-time English-to-Yoruba translator using OpenAI's Whisper for speech-to-text conversion and GPT-4o-mini for language translation, wrapped in an interactive Gradio interface. Preserves African languages through technology.
-                </p>
-                <div class="project-tech">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Whisper</span>
-                    <span class="tech-tag">Translation</span>
-                </div>
-                <a href="https://github.com/daniel-aasa/Real-Time-English-to-Yoruba-Translator" target="_blank" class="project-link github">
-                    View Repository <i class="fab fa-github"></i>
-                </a>
-            </div>
-
-            <div class="project-card github scroll-reveal">
-                <div class="project-image">
-                    <i class="fab fa-github github-icon"></i>
-                </div>
-                <h3 class="project-title">Text Summarization with GPT-4</h3>
-                <p class="project-description">
-                    Advanced text summarization tool using OpenAI's GPT-4 and Beautiful Soup for web scraping. Extracts and summarizes content from web pages, making information consumption more efficient.
-                </p>
-                <div class="project-tech">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">GPT-4</span>
-                    <span class="tech-tag">Web Scraping</span>
-                </div>
-                <a href="https://github.com/daniel-aasa/Text-Summarization-Using-OpenAI-s-GPT-4-and-Beautiful-Soup" target="_blank" class="project-link github">
-                    View Repository <i class="fab fa-github"></i>
-                </a>
-            </div>
-
-            <div class="project-card github scroll-reveal">
-                <div class="project-image">
-                    <i class="fab fa-github github-icon"></i>
-                </div>
-                <h3 class="project-title">LLM Model Fusion</h3>
-                <p class="project-description">
-                    Exploration of merging two language models using the mergekit tool. This project demonstrates advanced techniques in model combination and optimization for enhanced AI capabilities.
-                </p>
-                <div class="project-tech">
-                    <span class="tech-tag">Jupyter</span>
-                    <span class="tech-tag">LLM</span>
-                    <span class="tech-tag">Model Fusion</span>
-                </div>
-                <a href="https://github.com/daniel-aasa/LLM-Model-Fusion-with-Mergekit" target="_blank" class="project-link github">
-                    View Repository <i class="fab fa-github"></i>
-                </a>
+    <!-- Contact -->
+    <section class="section contact" id="contact">
+        <div class="contact-card scroll-reveal">
+            <span class="eyebrow">// contact</span>
+            <h2 class="section-title">Let's build something intelligent.</h2>
+            <p class="section-lead">Have a product idea, an AI problem or a platform to ship? I'd love to hear about it.</p>
+            <a href="mailto:aasaoluwagbemiga@gmail.com" class="btn btn-primary btn-lg"><i class="fas fa-envelope"></i> aasaoluwagbemiga@gmail.com</a>
+            <div class="social-links">
+                <a href="https://github.com/daniel-aasa" target="_blank" rel="noopener" class="social-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/daniel-aasa/" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://medium.com/@danaasa" target="_blank" rel="noopener" class="social-link" aria-label="Medium"><i class="fab fa-medium-m"></i></a>
             </div>
         </div>
     </section>
 
-    <script>
-        // Mobile menu toggle
-        const mobileToggle = document.querySelector('.mobile-menu-toggle');
-        const navLinks = document.querySelector('.nav-links');
+    <footer class="footer">
+        <p>&copy; <span id="year"></span> Daniel Aasa · AI Solutions Engineer &amp; Product Builder</p>
+    </footer>
 
-        mobileToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-
-        // Scroll reveal animation
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('revealed');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.scroll-reveal').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Navbar background on scroll
-        window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 100) {
-                navbar.style.background = 'rgba(10, 10, 10, 0.95)';
-            } else {
-                navbar.style.background = 'rgba(10, 10, 10, 0.9)';
-            }
-        });
-
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
-        });
-    </script>
+    <script src="assets/js/main.js"></script>
 </body>
 </html>
